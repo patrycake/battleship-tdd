@@ -1,5 +1,31 @@
-let Ship = (() =>{
-    let position = ['o','o','o','o']
+let Ship = ((name) =>{
+    let position = [];
+    let shipName = ''; 
+    const shipNames = [
+        {
+            "name": "carrier",
+            "num": 5
+        },
+        {
+            "name": "battleship",
+            "num": 4
+        },
+        {
+            "name": "submarine",
+            "num": 3
+        },
+        {
+            "name": "destroyer",
+            "num": 2
+        },
+    ]
+
+    shipNames.forEach(shipType => {
+        if(shipType.name == name) {
+            position = new Array(shipType.num).fill('o')
+            shipName = shipType.name 
+        }
+    })
 
     function hit(positionNum){
         if(positionNum < position.length && positionNum >= 0){
@@ -17,9 +43,11 @@ let Ship = (() =>{
         return val;
     }
 
+
     return {
         hit, 
-        isSunk
+        isSunk,
+        shipNames
     }
 })
 

@@ -1,1 +1,5 @@
 const board = require("./board")
+
+(()=>{
+    
+})()

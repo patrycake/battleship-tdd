@@ -3,12 +3,13 @@ const EMPTY_PIECE = 'e';
 const SHIP_PIECE = 's'
 const MISSED_PIECE = 'm'
 
+
 let gameBoard = (() =>{
     let board = new Array(10).fill(EMPTY_PIECE).map(() => new Array(10).fill(EMPTY_PIECE));
     let ships = []
 
-    function placeShip(arrPosition){
-        let newShip = ship();
+    function placeShip(name, arrPosition){
+        let newShip = ship(name);
         ships.push({"ship":newShip, "position":arrPosition})
         let check = arrPosition.reduce((previous, current) => {
             if(previous || !checkPosition(current)) return false
