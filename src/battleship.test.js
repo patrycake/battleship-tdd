@@ -58,6 +58,20 @@ test('Test gameboard place ship where a ship has already been placed', () => {
     expect(board.placeShip("battleship", position)).toBe(false)
 })
 
+test('Test gameboard place ship with lots of ships', () => {
+    let board = gameBoard();
+    expect(board.placeShip("carrier", [[3,4], [3,5], [3,6], [3,7], [3,8]])).toBe(true)
+    expect(board.placeShip("battleship", [[1,1],[1,2],[1,3],[1,4]])).toBe(true)
+    expect(board.placeShip("battleship", [[0,5], [0,6], [0,7], [0,8]])).toBe(true)
+    expect(board.placeShip("submarine", [[9, 2], [8,2], [7, 2]])).toBe(true)
+    expect(board.placeShip("destroyer", [[3,1], [2,1]])).toBe(true)
+})
+
+test('Test placeAllShips', () => {
+    let board = gameBoard();
+    expect(board.placeAllShips()).toBe(true);
+})
+
 test('Test gameboard place ship where a ship has already been placed', () => {
     let board = gameBoard();
     let position = [[1,1],[1,2],[1,3],[1,4]]
