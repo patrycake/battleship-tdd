@@ -24,11 +24,11 @@ html, body {
 .col {
     width: 20px;
     height: 20px;
-    border: 1px solid blue;;
+    border: 1px solid blue;
 }
 
 .col-attack:hover{
-    background-color: blue;;
+    background-color: blue;
 }
 
 .hit{

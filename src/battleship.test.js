@@ -69,7 +69,14 @@ test('Test gameboard place ship with lots of ships', () => {
 
 test('Test placeAllShips', () => {
     let board = gameBoard();
-    expect(board.placeAllShips()).toBe(true);
+    function rowcol(x, y){
+        console.log("use this")
+        return {
+            "row" : 2,
+            "col" : 3
+        }
+    }
+    expect(board.placeAllShips(rowcol)).toBe(true);
 })
 
 test('Test gameboard place ship where a ship has already been placed', () => {

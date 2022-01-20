@@ -15,7 +15,6 @@ let player = ((playerName) => {
         }
         while (compBoard[row][col] != 'o')
         compBoard[row][col] = 'x'
-        console.log(`comp: row:${row} col: ${col}`)
         let val = enemyBoard.receiveAttack(row, col)
         return {
             val,
