@@ -18,20 +18,24 @@ let gameBoard = (() => {
     function placeAllShips() {
         let result = true;
         ship().shipNames.forEach(shipInfo => {
-            let HorVer = Math.floor(Math.random() * 1) ///hor 0 ver 1
             let count = 0;
             let position = []
+            let HorVer = Math.floor(Math.random() * 2) ///hor 0 ver 1
             let rc = randomRowCol(shipInfo.num);
             do {
-                position.push([rc.big, rc.small + count])
+                
+                console.log(HorVer)
+                let arr = HorVer? [rc.big, rc.small + count] : [rc.small + count, rc.big];
+                position.push(arr)
                 count++;
-                if (!checkPosition([rc.big, rc.small + count])) {
+                if (!checkPosition(arr)) {
                     position = [];
                     count = 0
                     rc = randomRowCol(shipInfo.num);
                 }
             }
             while (count < shipInfo.num)
+
             console.log(`placeAllShip: ${shipInfo.name} ${position}`)
             result = result && placeShip(shipInfo.name, position)
         })
