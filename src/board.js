@@ -10,8 +10,8 @@ let gameBoard = (() => {
 
     function randomRowCol(num) {
         return {
-            "small": Math.floor(Math.random() * (9 - num) + 1),
-            "big": Math.floor(Math.random() * (9 - num) + 1)
+            "small": Math.floor(Math.random() * (9 - num)),
+            "big": Math.floor(Math.random() * (9))
         }
     }
 
@@ -23,8 +23,6 @@ let gameBoard = (() => {
             let HorVer = Math.floor(Math.random() * 2) ///hor 0 ver 1
             let rc = randomRowCol(shipInfo.num);
             do {
-                
-                console.log(HorVer)
                 let arr = HorVer? [rc.big, rc.small + count] : [rc.small + count, rc.big];
                 position.push(arr)
                 count++;
@@ -35,17 +33,12 @@ let gameBoard = (() => {
                 }
             }
             while (count < shipInfo.num)
-
-            console.log(`placeAllShip: ${shipInfo.name} ${position}`)
             result = result && placeShip(shipInfo.name, position)
         })
-        console.log(result)
         return result;
     }
 
-
     function placeShip(name, arrPosition) {
-
         let newShip = ship(name)
         let check = arrPosition.reduce((previous, current) => {
             if (previous && checkPosition(current)) return true
@@ -71,6 +64,7 @@ let gameBoard = (() => {
     }
 
     function receiveAttack(row, col) {
+        console.log(board)
         if (board[row][col] != SHIP_PIECE) {
             board[row][col] = MISSED_PIECE;
             return false;

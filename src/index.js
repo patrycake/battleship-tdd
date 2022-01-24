@@ -1,10 +1,9 @@
 const board = require("./board")
 const player = require("./player")
-const dom = require("./dom")
+const DOM = require("./dom")
 import "./style.css"
 
 (() => {
-
 
     let compBoard = board();
     let userBoard = board();
@@ -16,55 +15,29 @@ import "./style.css"
     let compWin = false;
 
     compBoard.placeAllShips();
-    userBoard.placeAllShips();
+    // userBoard.placeAllShips();
 
-    dom.displayBoard("player-board", handleClickPlayer)
-    dom.displayBoard("attack-board", handleClickAttack)
+    //first ship place message
+    //wait till user clicks placement
+    //second ship place message 
+    //etc until done with placement
+    let dom = DOM(userPlayer, compPlayer, userBoard, compBoard)
+    dom.displayBoard("player-board", "placeships") 
+    //need a hover function to show possible places and a click function to place ship
+    dom.displayBoard("attack-board", "nothing")
     dom.displayShips("player-board", userBoard.ships)
 
-    function handleClickPlayer(e) {
-        //place ships
+    // let count = 0;
+    // let message = document.getElementById("message")
+    // let currentShip = ship().shipNames[count]
+    // message.innerText = `Place ${currentShip.name}`
 
-    }
-
-    function handleClickAttack(e) {
-        //get user x,y for attack
-
-        if (compWin) {
-            console.log("Computer Won!")
-        } else if (userWin) {
-            console.log("Player Won")
-        } else {
-
-            if (userPlayer.play(compBoard, e.target.dataset.row, e.target.dataset.col)) {
-                userWin = compBoard.checkForSunkenShips()
-                
-                e.target.classList.add("hit")
-            } else {
-                e.target.classList.add("miss")
-            }
-            compWin = compTurn(userBoard)
-        }
-    }
+    //hover needs to know which ship for squares num highlight
+    //change message after the click (not on the hover)
 
 
-
-
-
-
-    function compTurn(board) {
-        let compPlay = compPlayer.randomPlay(board)
-        let userBoard = document.getElementById("player-board")
-        if (compPlay.val) {
-            userBoard.childNodes[compPlay.row].childNodes[compPlay.col].classList.add("hit")
-
-        } else {
-            userBoard.childNodes[compPlay.row].childNodes[compPlay.col].classList.add("miss")
-        }
-        return board.checkForSunkenShips()
-    }
-
-
-
+     
+    
+  
 
 })()

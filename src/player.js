@@ -3,15 +3,14 @@ let player = ((playerName) => {
     let compBoard = new Array(10).fill('o').map(() => new Array(10).fill('o'));
 
     function play(enemyBoard, row, col) {
-        // console.log(`player: row:${row} col: ${col}`)
         return enemyBoard.receiveAttack(row, col)
     }
 
     function randomPlay(enemyBoard) {
         let row, col;
         do {
-            row = Math.floor(Math.random() * (9) + 1);
-            col = Math.floor(Math.random() * (9) + 1);
+            row = Math.floor(Math.random() * (9));
+            col = Math.floor(Math.random() * (9));
         }
         while (compBoard[row][col] != 'o')
         compBoard[row][col] = 'x'

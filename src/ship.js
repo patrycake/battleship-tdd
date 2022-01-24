@@ -18,6 +18,14 @@ let Ship = ((name) =>{
             "name": "destroyer",
             "num": 2
         },
+        {
+            "name": "destroyer",
+            "num": 2
+        },
+        {
+            "name": "patrol boat",
+            "num": 1
+        }
     ]
 
     shipNames.forEach(shipType => {
